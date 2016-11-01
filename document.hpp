@@ -14,6 +14,7 @@ class input {
 	string text;
 	string line;
 	string word;
+	string find;
 };
 
 #endif

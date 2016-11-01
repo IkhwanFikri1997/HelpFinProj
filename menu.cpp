@@ -40,25 +40,45 @@ void menu::EditDocument(){
 }
 
 void menu::FindWords(){
-	int i;
+	int i=0;
 	int count=0;
+	int total=0;
 	cout << "===============Find Words================" << endl;
 	cout << "Please Input your Filename that you want to open" << endl;
 	cin >> Input.file;
 	Input.Mfile.open(Input.file);
-	string text[count];
+	cout << "Please Input the words that you want to find" << endl;
+	cin >> Input.find;
 	while(Input.Mfile >> Input.word){
 		count++;
 	}
-	
-	//Input.Mfile.clear();
-	/*
+	Input.Mfile.clear();
 	Input.Mfile.seekg(0, ios::beg);
+	string text[count];
 	for (int i=0;i<count;i++){
 		Input.Mfile>>text[i];
-		cout<<text[i]<<" ";
 	}
-	*/
-}
-
-	
+	int startScan, minIndex; 
+	string minValue;     
+	for (startScan = 0; startScan < (count-1); startScan++)     
+		{         
+	 		minIndex = startScan;         
+	 		minValue = text[startScan];         
+	 		for(int index = startScan + 1; index < count; index++)         
+	 		{             
+	 		if (text[index] < minValue)             
+	 			{                 
+	 			minValue = text[index];                 
+	 			minIndex = index;             
+	 			}
+	 		}         
+	text[minIndex] = text[startScan];         
+	text[startScan] = minValue; 
+		for(i=0;i<count;i++){
+		if(Input.find==text[i]){
+			total++;
+		}
+		}
+	}
+	cout << "there are " << total << " matches";
+}	

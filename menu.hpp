@@ -12,4 +12,10 @@ class menu {
 		void EditDocument();
 		void FindWords();		
 };
+
+class word{
+	input input;
+	public:
+		void SortWords();
+};
 #endif
